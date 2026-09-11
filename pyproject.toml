@@ -1,0 +1,19 @@
+[project]
+name = "plan-execute-agent"
+version = "0.1.0"
+description = "A local, Ollama-powered plan-and-execute agent."
+requires-python = ">=3.11"
+dependencies = [
+    "requests>=2.31",
+    "duckduckgo-search>=6.0",
+]
+
+[project.scripts]
+plan-execute-agent = "plan_execute_agent.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["plan_execute_agent*"]
