@@ -29,5 +29,9 @@ class OllamaClient:
                 f"Is `ollama serve` running and is the model pulled?"
             ) from exc
 
-        response.raise_for_status()
+        if not response.ok:
+            detail = response.json().get("error", response.text) if response.content else response.reason
+            raise OllamaConnectionError(
+                f"Ollama request failed ({response.status_code}): {detail}"
+            )
         return response.json()["message"]

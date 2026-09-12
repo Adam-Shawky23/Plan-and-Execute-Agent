@@ -49,3 +49,17 @@ def test_chat_raises_ollama_connection_error_on_connection_failure(mock_post):
 
     with pytest.raises(OllamaConnectionError):
         client.chat([{"role": "user", "content": "hi"}])
+
+
+@patch("plan_execute_agent.ollama_client.requests.post")
+def test_chat_raises_ollama_connection_error_on_http_error(mock_post):
+    resp = MagicMock()
+    resp.ok = False
+    resp.status_code = 404
+    resp.content = b'{"error": "model \'qwen2.5\' not found"}'
+    resp.json.return_value = {"error": "model 'qwen2.5' not found"}
+    mock_post.return_value = resp
+    client = OllamaClient()
+
+    with pytest.raises(OllamaConnectionError, match="model 'qwen2.5' not found"):
+        client.chat([{"role": "user", "content": "hi"}])

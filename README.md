@@ -1,5 +1,9 @@
 # Plan-and-Execute Agent
 
+[![Tests](https://github.com/adamshawky/plan-execute-agent/actions/workflows/tests.yml/badge.svg)](https://github.com/adamshawky/plan-execute-agent/actions/workflows/tests.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue)](pyproject.toml)
+
 A standalone, local-only agent that takes a complex task, breaks it into an
 ordered list of subtasks (planning), and executes each subtask using a mix
 of LLM reasoning and tool calls (action) via a local [Ollama](https://ollama.com)
@@ -51,6 +55,18 @@ Options:
 Add a new tool by writing a function returning a string, then registering
 it in `plan_execute_agent/tools/__init__.py::build_default_registry`.
 
+> **Security note:** `run_shell_command` gives the model unrestricted shell
+> access on your machine, and the agent runs fully autonomously with no
+> confirmation prompts. Only point this at models/tasks you trust, and
+> consider running it in a sandbox or container if the task is untrusted.
+
+## Troubleshooting
+
+- `Could not connect to Ollama...` — start the server with `ollama serve`.
+- `Ollama request failed (404): model '...' not found` — pull the model
+  first, e.g. `ollama pull qwen2.5`, or pass `--model <a model you have>`
+  (see installed models with `ollama list`).
+
 ## Development
 
 ```bash
@@ -59,7 +75,16 @@ pip install pytest
 pytest -v
 ```
 
+The suite includes one integration test (`test_full_run_against_real_ollama`
+in `tests/test_integration.py`) that is always skipped in CI since it needs
+a live Ollama server with the default model pulled. To run it locally,
+remove its `@pytest.mark.skip` decorator and run `pytest -v`.
+
 ## Design docs
 
-- Spec: `docs/superpowers/specs/2026-09-11-plan-execute-agent-design.md`
-- Plan: `docs/superpowers/plans/2026-09-11-plan-execute-agent.md`
+- Spec: `docs/specs/2026-09-11-plan-execute-agent-design.md`
+- Plan: `docs/plans/2026-09-11-plan-execute-agent.md`
+
+## License
+
+MIT — see [LICENSE](LICENSE).
