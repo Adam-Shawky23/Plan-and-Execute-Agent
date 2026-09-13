@@ -1,6 +1,10 @@
+<p align="center">
+  <img src="assets/banner.svg" alt="Plan-and-Execute Agent: a local, autonomous agent that plans, executes, and synthesizes, no cloud API keys." width="900">
+</p>
+
 # Plan-and-Execute Agent
 
-[![Tests](https://github.com/adamshawky/plan-execute-agent/actions/workflows/tests.yml/badge.svg)](https://github.com/adamshawky/plan-execute-agent/actions/workflows/tests.yml)
+[![Tests](https://github.com/Adam-Shawky23/Plan-and-Execute-Agent/actions/workflows/tests.yml/badge.svg)](https://github.com/Adam-Shawky23/Plan-and-Execute-Agent/actions/workflows/tests.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue)](pyproject.toml)
 
@@ -8,6 +12,10 @@ A standalone, local-only agent that takes a complex task, breaks it into an
 ordered list of subtasks (planning), and executes each subtask using a mix
 of LLM reasoning and tool calls (action) via a local [Ollama](https://ollama.com)
 model. No cloud LLM API keys required.
+
+<p align="center">
+  <img src="assets/architecture.svg" alt="Plan-and-Execute Agent pipeline: Planner produces an ordered subtask list, each subtask runs a Reason / Tool Call / Observe loop until it has an answer or hits its iteration cap, then a Synthesizer combines all subtask results into the final answer." width="560">
+</p>
 
 ## How it works
 

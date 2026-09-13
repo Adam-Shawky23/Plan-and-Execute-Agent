@@ -1,0 +1,75 @@
+<svg viewBox="0 0 1200 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Plan-and-Execute Agent: a local, autonomous agent that plans, executes, and synthesizes, no cloud API keys. Shown as a terminal session running the command plan-execute-agent to summarize the README and list TODOs, with the plan, execute, and synthesize steps logged and a final result printed.">
+  <defs>
+    <style>
+      text { font-family: "SF Mono", "Cascadia Code", "JetBrains Mono", Consolas, ui-monospace, monospace; }
+    </style>
+  </defs>
+
+  <!-- canvas -->
+  <rect x="0" y="0" width="1200" height="340" rx="20" fill="#150f22"></rect>
+
+  <!-- left column: wordmark -->
+  <rect x="24" y="96" width="4" height="168" rx="2" fill="#a371f7"></rect>
+
+  <text x="48" y="140" font-size="30" font-weight="700" fill="#f0edf7">Plan-and-Execute</text>
+  <text x="48" y="178" font-size="30" font-weight="700" fill="#f0edf7">Agent</text>
+
+  <text x="48" y="216" font-size="15" fill="#a99fc4">A local, autonomous agent that plans,</text>
+  <text x="48" y="238" font-size="15" fill="#a99fc4">executes, and synthesizes &#8212; no cloud</text>
+  <text x="48" y="260" font-size="15" fill="#a99fc4">API keys.</text>
+
+  <!-- right column: terminal window -->
+  <rect x="420" y="20" width="760" height="300" rx="14" fill="#1d1730" stroke="#362a52" stroke-width="1.5"></rect>
+  <line x1="420" y1="56" x2="1180" y2="56" stroke="#362a52" stroke-width="1.5"></line>
+
+  <circle cx="446" cy="38" r="6" fill="#ff5f56"></circle>
+  <circle cx="466" cy="38" r="6" fill="#ffbd2e"></circle>
+  <circle cx="486" cy="38" r="6" fill="#27c93f"></circle>
+  <text x="800" y="43" font-size="12" fill="#766e94" text-anchor="middle">plan-execute-agent &#8212; zsh</text>
+
+  <!-- prompt -->
+  <text x="444" y="92" font-size="13">
+    <tspan fill="#a371f7" font-weight="700">$</tspan>
+    <tspan fill="#f0edf7" dx="10">plan-execute-agent &quot;Summarize the README files in this repo and list any TODOs&quot;</tspan>
+  </text>
+
+  <!-- plan step -->
+  <text x="444" y="126" font-size="13">
+    <tspan fill="#a371f7" font-weight="700">[plan]</tspan>
+    <tspan fill="#c9c2de" dx="10">breaking task into 3 subtasks&#8230;</tspan>
+  </text>
+
+  <!-- execute steps -->
+  <text x="444" y="150" font-size="13">
+    <tspan fill="#a371f7" font-weight="700">[execute]</tspan>
+    <tspan fill="#c9c2de" dx="10">1/3  reason &#8594; read_file &#8594; observe</tspan>
+  </text>
+  <text x="1156" y="150" font-size="13" fill="#8b83a8" text-anchor="end">done</text>
+
+  <text x="444" y="174" font-size="13">
+    <tspan fill="#a371f7" font-weight="700">[execute]</tspan>
+    <tspan fill="#c9c2de" dx="10">2/3  reason &#8594; list_dir &#8594; observe</tspan>
+  </text>
+  <text x="1156" y="174" font-size="13" fill="#8b83a8" text-anchor="end">done</text>
+
+  <text x="444" y="198" font-size="13">
+    <tspan fill="#a371f7" font-weight="700">[execute]</tspan>
+    <tspan fill="#c9c2de" dx="10">3/3  reason &#8594; read_file &#8594; observe</tspan>
+  </text>
+  <text x="1156" y="198" font-size="13" fill="#8b83a8" text-anchor="end">done</text>
+
+  <!-- synthesize step -->
+  <text x="444" y="222" font-size="13">
+    <tspan fill="#a371f7" font-weight="700">[synthesize]</tspan>
+    <tspan fill="#c9c2de" dx="10">combining subtask results&#8230;</tspan>
+  </text>
+
+  <!-- final result -->
+  <text x="444" y="258" font-size="14.5" font-weight="600">
+    <tspan fill="#ffb454">&#10003; README summarized. Found 2 TODOs in plan_execute_agent/executor.py.</tspan>
+  </text>
+
+  <!-- next prompt + cursor -->
+  <text x="444" y="290" font-size="13" fill="#a371f7" font-weight="700">$</text>
+  <rect x="460" y="279" width="8" height="14" fill="#ffb454"></rect>
+</svg>

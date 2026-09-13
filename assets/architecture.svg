@@ -1,0 +1,110 @@
+<svg viewBox="0 0 720 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Plan-and-Execute Agent pipeline: a task goes to a Planner (one Ollama call) which produces an ordered subtask list; each subtask runs a Reason, Tool Call, Observe loop until it has an answer or hits its iteration cap; all subtask results are combined by a Synthesizer (one Ollama call) into the final answer.">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"></path>
+    </marker>
+  </defs>
+
+  <style>
+    svg { background: transparent; }
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+    .box { fill: #ffffff; stroke: #24292f; stroke-width: 2; }
+    .box-accent { fill: #f3ecfd; stroke: #6e40c9; stroke-width: 2; }
+    .box-dashed { fill: #ffffff; stroke: #57606a; stroke-width: 1.5; stroke-dasharray: 5 4; }
+    .container { fill: none; stroke: #57606a; stroke-width: 1.5; stroke-dasharray: 3 4; }
+    .title { fill: #24292f; font-size: 17px; font-weight: 600; text-anchor: middle; }
+    .subtitle { fill: #57606a; font-size: 12px; text-anchor: middle; }
+    .label { fill: #24292f; font-size: 13px; text-anchor: middle; }
+    .edge-label { fill: #57606a; font-size: 11.5px; text-anchor: middle; }
+    .container-label { fill: #57606a; font-size: 12.5px; font-weight: 600; }
+    .arrowhead { fill: #57606a; }
+    .edge { stroke: #57606a; stroke-width: 1.75; fill: none; marker-end: url(#arrow); }
+
+    @media (prefers-color-scheme: dark) {
+      .box { fill: #0d1117; stroke: #c9d1d9; }
+      .box-accent { fill: #2a2140; stroke: #a371f7; }
+      .box-dashed { fill: #0d1117; stroke: #8b949e; }
+      .container { stroke: #8b949e; }
+      .title { fill: #c9d1d9; }
+      .subtitle { fill: #8b949e; }
+      .label { fill: #c9d1d9; }
+      .edge-label { fill: #8b949e; }
+      .container-label { fill: #8b949e; }
+      .arrowhead { fill: #8b949e; }
+      .edge { stroke: #8b949e; }
+    }
+  </style>
+
+  <!-- Task -->
+  <rect class="box" x="260" y="20" width="200" height="60" rx="10"></rect>
+  <text class="title" x="360" y="55">Task</text>
+
+  <line class="edge" x1="360" y1="80" x2="360" y2="106"></line>
+  <text class="edge-label" x="440" y="97">user request</text>
+
+  <!-- Planner -->
+  <rect class="box-accent" x="260" y="110" width="200" height="72" rx="10"></rect>
+  <text class="title" x="360" y="140">Planner</text>
+  <text class="subtitle" x="360" y="160">1 Ollama call</text>
+
+  <line class="edge" x1="360" y1="182" x2="360" y2="206"></line>
+  <text class="edge-label" x="470" y="197">ordered subtask list</text>
+
+  <!-- Subtask list -->
+  <rect class="box-dashed" x="210" y="210" width="300" height="50" rx="8"></rect>
+  <text class="label" x="360" y="240">Subtask 1, 2, &#8230; N</text>
+
+  <line class="edge" x1="360" y1="260" x2="360" y2="286"></line>
+  <text class="edge-label" x="450" y="277">one subtask at a time</text>
+
+  <!-- Executor container -->
+  <rect class="container" x="60" y="290" width="600" height="300" rx="12"></rect>
+  <text class="container-label" x="78" y="314">Execute &#8212; mini-ReAct loop, run once per subtask</text>
+
+  <!-- Reason -->
+  <rect class="box" x="110" y="345" width="160" height="66" rx="10"></rect>
+  <text class="label" x="190" y="384">Reason</text>
+
+  <!-- Tool Call -->
+  <rect class="box" x="430" y="345" width="160" height="66" rx="10"></rect>
+  <text class="label" x="510" y="384">Tool Call</text>
+
+  <!-- Observe -->
+  <rect class="box" x="270" y="480" width="180" height="66" rx="10"></rect>
+  <text class="label" x="360" y="519">Observe</text>
+
+  <!-- Reason -> Tool Call -->
+  <line class="edge" x1="270" y1="373" x2="424" y2="373"></line>
+  <text class="edge-label" x="347" y="364">picks a tool</text>
+
+  <!-- Tool Call -> Observe -->
+  <path class="edge" d="M 500,411 L 420,480" fill="none"></path>
+  <text class="edge-label" x="490" y="440">tool result</text>
+
+  <!-- Observe -> Reason (loop back) -->
+  <path class="edge" d="M 300,480 C 150,440 130,440 178,411" fill="none"></path>
+  <text class="edge-label" x="130" y="460">loop until answer</text>
+  <text class="edge-label" x="130" y="474">or iteration cap</text>
+
+  <!-- exit from Observe down to subtask result -->
+  <line class="edge" x1="360" y1="546" x2="360" y2="606"></line>
+  <text class="edge-label" x="470" y="580">final answer for subtask</text>
+
+  <!-- Subtask results -->
+  <rect class="box-dashed" x="210" y="610" width="300" height="50" rx="8"></rect>
+  <text class="label" x="360" y="640">Subtask results (1 &#8230; N)</text>
+
+  <line class="edge" x1="360" y1="660" x2="360" y2="686"></line>
+  <text class="edge-label" x="440" y="677">combine results</text>
+
+  <!-- Synthesizer -->
+  <rect class="box-accent" x="260" y="690" width="200" height="72" rx="10"></rect>
+  <text class="title" x="360" y="720">Synthesizer</text>
+  <text class="subtitle" x="360" y="740">1 Ollama call</text>
+
+  <line class="edge" x1="360" y1="762" x2="360" y2="786"></line>
+
+  <!-- Final answer -->
+  <rect class="box" x="260" y="790" width="200" height="60" rx="10"></rect>
+  <text class="title" x="360" y="825">Final Answer</text>
+</svg>
